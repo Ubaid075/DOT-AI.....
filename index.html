@@ -1,0 +1,682 @@
+<!doctype html>
+<html lang="en" data-layout="center" data-theme="monochrome" data-modules="features,gallery,pricing,steps,support">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DOT AI - Create Stunning AI Images Instantly | Premium AI Generator</title>
+    <meta name="description" content="Generate high-quality AI images instantly with DOT AI. Upload, share, and explore thousands of AI artworks in our public gallery. Start creating today.">
+    <meta property="og:title" content="DOT AI - Create Stunning AI Images Instantly">
+    <meta property="og:description" content="Generate high-quality AI images instantly with DOT AI. Upload, share, and explore thousands of AI artworks in our public gallery.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://dotai.com">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="DOT AI - Create Stunning AI Images Instantly">
+    <meta name="twitter:description" content="Generate high-quality AI images instantly with DOT AI. Upload, share, and explore thousands of AI artworks.">
+    <link rel="canonical" href="https://dotai.com">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    animation: {
+                        'fade-in': 'fadeIn 0.8s ease-out',
+                        'fade-up': 'fadeUp 0.8s ease-out',
+                        'slide-up': 'slideUp 0.6s ease-out',
+                        'slide-down': 'slideDown 0.6s ease-out',
+                        'float': 'float 3s ease-in-out infinite',
+                        'pulse-soft': 'pulseSoft 2s ease-in-out infinite',
+                        'scale-hover': 'scaleHover 0.3s ease-out'
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        @keyframes fadeUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        @keyframes slideUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        @keyframes slideDown {
+            from { opacity: 0; transform: translateY(-20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+        }
+        @keyframes pulseSoft {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.02); }
+        }
+        @keyframes scaleHover {
+            from { transform: scale(1); }
+            to { transform: scale(1.05); }
+        }
+        
+        /* Header scroll animation */
+        .header-shrink {
+            transform: scale(0.95);
+            backdrop-filter: blur(20px);
+            background: rgba(0, 0, 0, 0.9);
+        }
+        
+        /* Intersection Observer animations */
+        .animate-on-scroll {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s ease-out;
+        }
+        
+        .animate-on-scroll.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        /* Ripple effect */
+        .ripple {
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .ripple::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 0;
+            height: 0;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.3);
+            transform: translate(-50%, -50%);
+            transition: width 0.6s, height 0.6s;
+        }
+        
+        .ripple:active::after {
+            width: 300px;
+            height: 300px;
+        }
+
+        /* Mobile hamburger menu */
+        .mobile-menu {
+            transform: translateX(100%);
+            transition: transform 0.3s ease-in-out;
+        }
+        
+        .mobile-menu.open {
+            transform: translateX(0);
+        }
+
+        /* Mobile responsive adjustments */
+        @media (max-width: 768px) {
+            .hero-title {
+                font-size: 2.5rem;
+                line-height: 1.1;
+            }
+            
+            .hero-subtitle {
+                font-size: 1.125rem;
+            }
+            
+            .mobile-padding {
+                padding-left: 1rem;
+                padding-right: 1rem;
+            }
+            
+            .mobile-text-center {
+                text-align: center;
+            }
+            
+            .mobile-full-width {
+                width: 100%;
+            }
+        }
+
+        @media (max-width: 640px) {
+            .hero-title {
+                font-size: 2rem;
+            }
+            
+            .section-title {
+                font-size: 2rem;
+            }
+            
+            .card-title {
+                font-size: 1.25rem;
+            }
+        }
+    </style>
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "WebPage",
+        "name": "DOT AI - AI Image Generation Platform",
+        "description": "Generate high-quality AI images instantly with DOT AI. Upload, share, and explore thousands of AI artworks in our public gallery.",
+        "url": "https://dotai.com",
+        "provider": {
+            "@type": "Organization",
+            "name": "DOT AI",
+            "url": "https://dotai.com"
+        }
+    }
+    </script>
+</head>
+<body class="bg-white text-black min-h-screen">
+    <header class="sticky top-0 z-50 bg-black text-white transition-all duration-300 animate-slide-down">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-16">
+                <div class="flex items-center">
+                    <div class="flex-shrink-0">
+                        <h1 class="text-xl sm:text-2xl font-bold animate-fade-in">DOT AI</h1>
+                    </div>
+                </div>
+                
+                <!-- Desktop Navigation -->
+                <nav class="hidden md:block">
+                    <div class="ml-10 flex items-baseline space-x-4 lg:space-x-8">
+                        <a href="#home" class="text-white hover:text-gray-300 transition-colors duration-300 px-2 py-1">Home</a>
+                        <a href="#gallery" class="text-gray-300 hover:text-white transition-colors duration-300 px-2 py-1">Public Gallery</a>
+                        <a href="#pricing" class="text-gray-300 hover:text-white transition-colors duration-300 px-2 py-1">Pricing</a>
+                        <a href="#support" class="text-gray-300 hover:text-white transition-colors duration-300 px-2 py-1">Support</a>
+                    </div>
+                </nav>
+                
+                <!-- Desktop Actions -->
+                <div class="hidden md:flex items-center space-x-2 lg:space-x-4">
+                    <button class="text-gray-300 hover:text-white transition-colors duration-300 px-2 py-1">Login</button>
+                    <button class="bg-white text-black px-3 lg:px-4 py-2 rounded-lg font-semibold hover:bg-gray-200 transition-all duration-300 transform hover:scale-105 text-sm lg:text-base">Sign Up</button>
+                    <button class="p-2 rounded-lg border border-gray-600 hover:bg-gray-800 transition-colors duration-300">
+                        <i data-lucide="user" class="w-4 h-4 lg:w-5 lg:h-5"></i>
+                    </button>
+                    <button id="theme-toggle" class="p-2 rounded-lg border border-gray-600 hover:bg-gray-800 transition-colors duration-300">
+                        <i data-lucide="sun" class="w-4 h-4 lg:w-5 lg:h-5"></i>
+                    </button>
+                </div>
+
+                <!-- Mobile Menu Button -->
+                <div class="md:hidden">
+                    <button id="mobile-menu-button" class="p-2 rounded-lg border border-gray-600 hover:bg-gray-800 transition-colors duration-300">
+                        <i data-lucide="menu" class="w-6 h-6"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Mobile Menu Overlay -->
+        <div id="mobile-menu" class="mobile-menu fixed inset-0 bg-black z-50 md:hidden">
+            <div class="flex flex-col h-full">
+                <div class="flex items-center justify-between p-4 border-b border-gray-800">
+                    <h1 class="text-2xl font-bold">DOT AI</h1>
+                    <button id="mobile-menu-close" class="p-2 rounded-lg border border-gray-600 hover:bg-gray-800 transition-colors duration-300">
+                        <i data-lucide="x" class="w-6 h-6"></i>
+                    </button>
+                </div>
+                <nav class="flex-1 px-4 py-8">
+                    <div class="space-y-6">
+                        <a href="#home" class="block text-2xl font-semibold text-white hover:text-gray-300 transition-colors duration-300 mobile-menu-link">Home</a>
+                        <a href="#gallery" class="block text-2xl font-semibold text-gray-300 hover:text-white transition-colors duration-300 mobile-menu-link">Public Gallery</a>
+                        <a href="#pricing" class="block text-2xl font-semibold text-gray-300 hover:text-white transition-colors duration-300 mobile-menu-link">Pricing</a>
+                        <a href="#support" class="block text-2xl font-semibold text-gray-300 hover:text-white transition-colors duration-300 mobile-menu-link">Support</a>
+                    </div>
+                </nav>
+                <div class="p-4 border-t border-gray-800 space-y-4">
+                    <button class="w-full text-left text-xl text-gray-300 hover:text-white transition-colors duration-300 py-2">Login</button>
+                    <button class="w-full bg-white text-black py-3 rounded-lg font-semibold hover:bg-gray-200 transition-all duration-300 text-lg">Sign Up</button>
+                    <div class="flex space-x-4 pt-2">
+                        <button class="p-3 rounded-lg border border-gray-600 hover:bg-gray-800 transition-colors duration-300">
+                            <i data-lucide="user" class="w-6 h-6"></i>
+                        </button>
+                        <button class="p-3 rounded-lg border border-gray-600 hover:bg-gray-800 transition-colors duration-300">
+                            <i data-lucide="sun" class="w-6 h-6"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <section id="home" class="pt-20 pb-16 sm:pb-24 lg:pb-32 bg-white">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="grid lg:grid-cols-2 gap-8 lg:gap-12 items-center">
+                    <div class="animate-fade-up text-center lg:text-left">
+                        <h2 class="hero-title text-4xl sm:text-5xl lg:text-6xl xl:text-7xl font-bold mb-4 sm:mb-6 text-black animate-fade-up" style="animation-delay: 0.2s;">
+                            Create Stunning AI Images Instantly
+                        </h2>
+                        <p class="hero-subtitle text-lg sm:text-xl text-gray-600 mb-6 sm:mb-8 leading-relaxed animate-fade-in max-w-2xl mx-auto lg:mx-0" style="animation-delay: 0.4s;">
+                            Generate high-quality AI images, upload your art, and explore the public gallery with our cutting-edge AI technology.
+                        </p>
+                        <div class="flex flex-col sm:flex-row gap-4 animate-fade-in justify-center lg:justify-start" style="animation-delay: 0.6s;">
+                            <button class="bg-black text-white px-6 sm:px-8 py-3 sm:py-4 rounded-xl font-bold text-base sm:text-lg hover:bg-white hover:text-black border-2 border-black transition-all duration-300 transform hover:scale-105 ripple mobile-full-width sm:w-auto">
+                                Get Started
+                            </button>
+                            <button class="bg-white text-black border-2 border-black px-6 sm:px-8 py-3 sm:py-4 rounded-xl font-semibold text-base sm:text-lg hover:bg-black hover:text-white transition-all duration-300 transform hover:scale-105 mobile-full-width sm:w-auto">
+                                Explore Gallery
+                            </button>
+                        </div>
+                    </div>
+                    <div class="animate-slide-up animate-float mt-8 lg:mt-0">
+                        <div class="relative w-full aspect-video">
+                            <img 
+                                src="https://cdn.ailandingpage.ai/landingpage_io/user_generate/71696cde-5bca-4aa5-a263-ed31be1a1d25/71696cde-5bca-4aa5-a263-ed31be1a1d25/hero-image/e2083a6d78_0.png"
+                                alt="AI Generated Artwork Preview" 
+                                class="w-full h-full object-cover rounded-2xl shadow-2xl filter grayscale hover:scale-105 transition-transform duration-500"
+                                width="800" height="450" loading="eager" decoding="async">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="py-16 sm:py-20 bg-gray-50">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center mb-12 sm:mb-16 animate-on-scroll">
+                    <h2 class="section-title text-3xl sm:text-4xl font-bold mb-4 text-black">Powerful Features</h2>
+                    <p class="text-lg sm:text-xl text-gray-600 max-w-2xl mx-auto">Everything you need to create and share amazing AI art</p>
+                </div>
+                <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8">
+                    <div class="bg-white p-6 sm:p-8 rounded-2xl border border-gray-200 hover:shadow-lg hover:scale-105 transition-all duration-300 animate-on-scroll">
+                        <div class="w-12 h-12 bg-black rounded-lg flex items-center justify-center mb-6">
+                            <i data-lucide="zap" class="w-6 h-6 text-white"></i>
+                        </div>
+                        <h3 class="card-title text-lg sm:text-xl font-bold mb-4 text-black">Fast Image Generation</h3>
+                        <p class="text-gray-600 text-sm sm:text-base">Generate stunning images in seconds with our advanced AI algorithms</p>
+                    </div>
+                    <div class="bg-white p-6 sm:p-8 rounded-2xl border border-gray-200 hover:shadow-lg hover:scale-105 transition-all duration-300 animate-on-scroll" style="animation-delay: 0.1s;">
+                        <div class="w-12 h-12 bg-black rounded-lg flex items-center justify-center mb-6">
+                            <i data-lucide="upload" class="w-6 h-6 text-white"></i>
+                        </div>
+                        <h3 class="card-title text-lg sm:text-xl font-bold mb-4 text-black">Upload & Share</h3>
+                        <p class="text-gray-600 text-sm sm:text-base">Upload your creations and share them with the community</p>
+                    </div>
+                    <div class="bg-white p-6 sm:p-8 rounded-2xl border border-gray-200 hover:shadow-lg hover:scale-105 transition-all duration-300 animate-on-scroll" style="animation-delay: 0.2s;">
+                        <div class="w-12 h-12 bg-black rounded-lg flex items-center justify-center mb-6">
+                            <i data-lucide="user" class="w-6 h-6 text-white"></i>
+                        </div>
+                        <h3 class="card-title text-lg sm:text-xl font-bold mb-4 text-black">Personal Profile Gallery</h3>
+                        <p class="text-gray-600 text-sm sm:text-base">Organize your artwork in your personal gallery and profile</p>
+                    </div>
+                    <div class="bg-white p-6 sm:p-8 rounded-2xl border border-gray-200 hover:shadow-lg hover:scale-105 transition-all duration-300 animate-on-scroll" style="animation-delay: 0.3s;">
+                        <div class="w-12 h-12 bg-black rounded-lg flex items-center justify-center mb-6">
+                            <i data-lucide="download" class="w-6 h-6 text-white"></i>
+                        </div>
+                        <h3 class="card-title text-lg sm:text-xl font-bold mb-4 text-black">Download Your Images</h3>
+                        <p class="text-gray-600 text-sm sm:text-base">Download high-resolution versions of all your generated images</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="gallery" class="py-16 sm:py-20 bg-white">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center mb-12 sm:mb-16 animate-on-scroll">
+                    <h2 class="section-title text-3xl sm:text-4xl font-bold mb-4 text-black">Public Gallery Preview</h2>
+                    <p class="text-lg sm:text-xl text-gray-600 max-w-2xl mx-auto">Explore thousands of user-generated AI artworks</p>
+                </div>
+                
+                <!-- Responsive Gallery Grid -->
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6 mb-8 sm:mb-12">
+                    <div class="relative group overflow-hidden rounded-2xl border-2 border-gray-200 hover:border-black transition-all duration-300 animate-on-scroll">
+                        <div class="aspect-square">
+                            <img 
+                                src="https://cdn.ailandingpage.ai/landingpage_io/user_generate/71696cde-5bca-4aa5-a263-ed31be1a1d25/71696cde-5bca-4aa5-a263-ed31be1a1d25/gallery-1/fd35c79ed9_0.png"
+                                alt="AI Art Gallery Image 1" 
+                                class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-110 filter grayscale"
+                                width="400" height="400" loading="lazy" decoding="async">
+                        </div>
+                        <div class="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-all duration-300"></div>
+                    </div>
+                    <div class="relative group overflow-hidden rounded-2xl border-2 border-gray-200 hover:border-black transition-all duration-300 animate-on-scroll" style="animation-delay: 0.1s;">
+                        <div class="aspect-square">
+                            <img 
+                                src="https://cdn.ailandingpage.ai/landingpage_io/user_generate/71696cde-5bca-4aa5-a263-ed31be1a1d25/71696cde-5bca-4aa5-a263-ed31be1a1d25/gallery-2/d0686ab9ce_0.png"
+                                alt="AI Art Gallery Image 2" 
+                                class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-110 filter grayscale"
+                                width="400" height="400" loading="lazy" decoding="async">
+                        </div>
+                        <div class="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-all duration-300"></div>
+                    </div>
+                    <div class="relative group overflow-hidden rounded-2xl border-2 border-gray-200 hover:border-black transition-all duration-300 animate-on-scroll" style="animation-delay: 0.2s;">
+                        <div class="aspect-square">
+                            <img 
+                                src="https://cdn.ailandingpage.ai/landingpage_io/user_generate/71696cde-5bca-4aa5-a263-ed31be1a1d25/71696cde-5bca-4aa5-a263-ed31be1a1d25/gallery-3/be6df89be9_0.png"
+                                alt="AI Art Gallery Image 3" 
+                                class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-110 filter grayscale"
+                                width="400" height="400" loading="lazy" decoding="async">
+                        </div>
+                        <div class="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-all duration-300"></div>
+                    </div>
+                    <div class="relative group overflow-hidden rounded-2xl border-2 border-gray-200 hover:border-black transition-all duration-300 animate-on-scroll" style="animation-delay: 0.3s;">
+                        <div class="aspect-square">
+                            <img 
+                                src="https://cdn.ailandingpage.ai/landingpage_io/user_generate/71696cde-5bca-4aa5-a263-ed31be1a1d25/71696cde-5bca-4aa5-a263-ed31be1a1d25/gallery-4/f1f9b1d1c1_0.png"
+                                alt="AI Art Gallery Image 4" 
+                                class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-110 filter grayscale"
+                                width="400" height="400" loading="lazy" decoding="async">
+                        </div>
+                        <div class="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-all duration-300"></div>
+                    </div>
+                    <div class="relative group overflow-hidden rounded-2xl border-2 border-gray-200 hover:border-black transition-all duration-300 animate-on-scroll" style="animation-delay: 0.4s;">
+                        <div class="aspect-square">
+                            <img 
+                                src="https://cdn.ailandingpage.ai/landingpage_io/user_generate/71696cde-5bca-4aa5-a263-ed31be1a1d25/71696cde-5bca-4aa5-a263-ed31be1a1d25/gallery-5/299de5ce56_0.png"
+                                alt="AI Art Gallery Image 5" 
+                                class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-110 filter grayscale"
+                                width="400" height="400" loading="lazy" decoding="async">
+                        </div>
+                        <div class="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-all duration-300"></div>
+                    </div>
+                    <div class="relative group overflow-hidden rounded-2xl border-2 border-gray-200 hover:border-black transition-all duration-300 animate-on-scroll" style="animation-delay: 0.5s;">
+                        <div class="aspect-square">
+                            <img 
+                                src="https://cdn.ailandingpage.ai/landingpage_io/user_generate/71696cde-5bca-4aa5-a263-ed31be1a1d25/71696cde-5bca-4aa5-a263-ed31be1a1d25/gallery-6/d769e84da6_0.png"
+                                alt="AI Art Gallery Image 6" 
+                                class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-110 filter grayscale"
+                                width="400" height="400" loading="lazy" decoding="async">
+                        </div>
+                        <div class="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-all duration-300"></div>
+                    </div>
+                    <div class="relative group overflow-hidden rounded-2xl border-2 border-gray-200 hover:border-black transition-all duration-300 animate-on-scroll" style="animation-delay: 0.6s;">
+                        <div class="aspect-square">
+                            <img 
+                                src="https://cdn.ailandingpage.ai/landingpage_io/user_generate/71696cde-5bca-4aa5-a263-ed31be1a1d25/71696cde-5bca-4aa5-a263-ed31be1a1d25/gallery-7/9a9fd2ec26_0.png"
+                                alt="AI Art Gallery Image 7" 
+                                class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-110 filter grayscale"
+                                width="400" height="400" loading="lazy" decoding="async">
+                        </div>
+                        <div class="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-all duration-300"></div>
+                    </div>
+                    <div class="relative group overflow-hidden rounded-2xl border-2 border-gray-200 hover:border-black transition-all duration-300 animate-on-scroll" style="animation-delay: 0.7s;">
+                        <div class="aspect-square">
+                            <img 
+                                src="https://cdn.ailandingpage.ai/landingpage_io/user_generate/71696cde-5bca-4aa5-a263-ed31be1a1d25/71696cde-5bca-4aa5-a263-ed31be1a1d25/gallery-8/f96418a22b_0.png"
+                                alt="AI Art Gallery Image 8" 
+                                class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-110 filter grayscale"
+                                width="400" height="400" loading="lazy" decoding="async">
+                        </div>
+                        <div class="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-all duration-300"></div>
+                    </div>
+                </div>
+                <div class="text-center animate-on-scroll">
+                    <button class="bg-black text-white px-6 sm:px-8 py-3 sm:py-4 rounded-xl font-semibold text-base sm:text-lg hover:bg-white hover:text-black border-2 border-black transition-all duration-300 ripple mobile-full-width sm:w-auto">
+                        View Full Gallery
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <section id="pricing" class="py-16 sm:py-20 bg-black text-white">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center mb-12 sm:mb-16 animate-on-scroll">
+                    <h2 class="section-title text-3xl sm:text-4xl font-bold mb-4">Beautiful Animated Cards</h2>
+                    <p class="text-lg sm:text-xl text-gray-300 max-w-2xl mx-auto">Select the perfect credit package for your creative needs</p>
+                </div>
+                <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8">
+                    <div class="bg-white text-black p-6 sm:p-8 rounded-2xl border border-gray-300 hover:shadow-2xl hover:scale-105 transition-all duration-300 animate-on-scroll">
+                        <div class="text-center">
+                            <h3 class="text-xl sm:text-2xl font-bold mb-2">Basic</h3>
+                            <div class="text-3xl sm:text-4xl font-bold mb-4">$9</div>
+                            <p class="text-gray-600 mb-6">100 credits</p>
+                            <button class="w-full bg-black text-white py-3 rounded-lg font-semibold hover:bg-gray-800 transition-all duration-300 animate-pulse-soft ripple">
+                                Buy Credits
+                            </button>
+                        </div>
+                    </div>
+                    <div class="bg-white text-black p-6 sm:p-8 rounded-2xl border border-gray-300 hover:shadow-2xl hover:scale-105 transition-all duration-300 animate-on-scroll" style="animation-delay: 0.1s;">
+                        <div class="text-center">
+                            <h3 class="text-xl sm:text-2xl font-bold mb-2">Standard</h3>
+                            <div class="text-3xl sm:text-4xl font-bold mb-4">$17</div>
+                            <p class="text-gray-600 mb-6">200 credits</p>
+                            <button class="w-full bg-black text-white py-3 rounded-lg font-semibold hover:bg-gray-800 transition-all duration-300 animate-pulse-soft ripple">
+                                Buy Credits
+                            </button>
+                        </div>
+                    </div>
+                    <div class="bg-white text-black p-6 sm:p-8 rounded-2xl border-2 border-black hover:shadow-2xl hover:scale-110 transition-all duration-300 animate-on-scroll" style="animation-delay: 0.2s;">
+                        <div class="text-center">
+                            <div class="bg-black text-white px-3 py-1 rounded-full text-sm font-semibold mb-4 inline-block">Popular</div>
+                            <h3 class="text-xl sm:text-2xl font-bold mb-2">Pro</h3>
+                            <div class="text-3xl sm:text-4xl font-bold mb-4">$40</div>
+                            <p class="text-gray-600 mb-6">400 credits</p>
+                            <button class="w-full bg-black text-white py-3 rounded-lg font-semibold hover:bg-gray-800 transition-all duration-300 animate-pulse-soft ripple">
+                                Buy Credits
+                            </button>
+                        </div>
+                    </div>
+                    <div class="bg-white text-black p-6 sm:p-8 rounded-2xl border border-gray-300 hover:shadow-2xl hover:scale-105 transition-all duration-300 animate-on-scroll" style="animation-delay: 0.3s;">
+                        <div class="text-center">
+                            <h3 class="text-xl sm:text-2xl font-bold mb-2">Premium</h3>
+                            <div class="text-3xl sm:text-4xl font-bold mb-4">$75</div>
+                            <p class="text-gray-600 mb-6">1000 credits</p>
+                            <button class="w-full bg-black text-white py-3 rounded-lg font-semibold hover:bg-gray-800 transition-all duration-300 animate-pulse-soft ripple">
+                                Buy Credits
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="py-16 sm:py-20 bg-white">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center mb-12 sm:mb-16 animate-on-scroll">
+                    <h2 class="section-title text-3xl sm:text-4xl font-bold mb-4 text-black">How It Works</h2>
+                    <p class="text-lg sm:text-xl text-gray-600 max-w-2xl mx-auto">Simple steps to create and share your AI art</p>
+                </div>
+                <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-8">
+                    <div class="text-center animate-on-scroll">
+                        <div class="w-16 h-16 bg-black text-white rounded-full flex items-center justify-center mx-auto mb-6 animate-pulse-soft">
+                            <span class="text-2xl font-bold">1</span>
+                        </div>
+                        <h3 class="text-lg sm:text-xl font-bold mb-4 text-black">Create or Upload</h3>
+                        <p class="text-gray-600 text-sm sm:text-base">Generate AI images or upload your existing artwork to the platform</p>
+                    </div>
+                    <div class="text-center animate-on-scroll" style="animation-delay: 0.1s;">
+                        <div class="w-16 h-16 bg-black text-white rounded-full flex items-center justify-center mx-auto mb-6 animate-pulse-soft">
+                            <span class="text-2xl font-bold">2</span>
+                        </div>
+                        <h3 class="text-lg sm:text-xl font-bold mb-4 text-black">Add Title</h3>
+                        <p class="text-gray-600 text-sm sm:text-base">Give your artwork a title and prepare it for publication</p>
+                    </div>
+                    <div class="text-center animate-on-scroll" style="animation-delay: 0.2s;">
+                        <div class="w-16 h-16 bg-black text-white rounded-full flex items-center justify-center mx-auto mb-6 animate-pulse-soft">
+                            <span class="text-2xl font-bold">3</span>
+                        </div>
+                        <h3 class="text-lg sm:text-xl font-bold mb-4 text-black">Publish in Public Gallery</h3>
+                        <p class="text-gray-600 text-sm sm:text-base">Your artwork appears in both the public gallery and your personal profile</p>
+                    </div>
+                    <div class="text-center animate-on-scroll" style="animation-delay: 0.3s;">
+                        <div class="w-16 h-16 bg-black text-white rounded-full flex items-center justify-center mx-auto mb-6 animate-pulse-soft">
+                            <span class="text-2xl font-bold">4</span>
+                        </div>
+                        <h3 class="text-lg sm:text-xl font-bold mb-4 text-black">Download Anytime</h3>
+                        <p class="text-gray-600 text-sm sm:text-base">Download high-resolution versions or edit your creations whenever you want</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="support" class="py-16 sm:py-20 bg-white border-t border-black">
+            <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="bg-white border-2 border-black p-6 sm:p-8 lg:p-12 rounded-2xl text-center animate-on-scroll">
+                    <h2 class="text-2xl sm:text-3xl font-bold mb-6 text-black">Support Section</h2>
+                    <div class="space-y-4 mb-8 animate-fade-in" style="animation-delay: 0.2s;">
+                        <p class="text-base sm:text-lg text-black">For credit purchase, email: <a href="mailto:ubaidjfh@gmail.com" class="underline hover:no-underline transition-all duration-300">ubaidjfh@gmail.com</a></p>
+                        <p class="text-base sm:text-lg text-black">Or submit a question through the Support Form.</p>
+                    </div>
+                    <div class="max-w-md mx-auto space-y-4 mb-8">
+                        <input type="text" placeholder="Your Name" class="w-full px-4 py-3 border-2 border-gray-300 rounded-lg focus:border-black transition-all duration-300 animate-fade-in text-base" style="animation-delay: 0.4s;">
+                        <input type="email" placeholder="Your Email" class="w-full px-4 py-3 border-2 border-gray-300 rounded-lg focus:border-black transition-all duration-300 animate-fade-in text-base" style="animation-delay: 0.5s;">
+                        <textarea placeholder="Your Question" rows="4" class="w-full px-4 py-3 border-2 border-gray-300 rounded-lg focus:border-black transition-all duration-300 animate-fade-in text-base resize-none" style="animation-delay: 0.6s;"></textarea>
+                    </div>
+                    <button class="bg-black text-white px-6 sm:px-8 py-3 sm:py-4 rounded-xl font-bold text-base sm:text-lg hover:bg-white hover:text-black border-2 border-black transition-all duration-300 transform hover:scale-105 ripple animate-fade-in mobile-full-width sm:w-auto" style="animation-delay: 0.7s;">
+                        Submit Question
+                    </button>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="py-12 sm:py-16 bg-black text-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-8 mb-8 sm:mb-12">
+                <div class="animate-fade-in text-center sm:text-left">
+                    <h3 class="text-xl sm:text-2xl font-bold mb-4">DOT AI</h3>
+                    <p class="text-gray-300 text-sm sm:text-base">Create stunning AI images instantly with our advanced generation platform.</p>
+                </div>
+                <div class="animate-fade-in text-center sm:text-left" style="animation-delay: 0.1s;">
+                    <h4 class="text-base sm:text-lg font-semibold mb-4">Quick Links</h4>
+                    <ul class="space-y-2">
+                        <li><a href="#home" class="text-gray-300 hover:text-white transition-colors duration-300 text-sm sm:text-base">Home</a></li>
+                        <li><a href="#gallery" class="text-gray-300 hover:text-white transition-colors duration-300 text-sm sm:text-base">Gallery</a></li>
+                        <li><a href="#pricing" class="text-gray-300 hover:text-white transition-colors duration-300 text-sm sm:text-base">Pricing</a></li>
+                        <li><a href="#support" class="text-gray-300 hover:text-white transition-colors duration-300 text-sm sm:text-base">Support</a></li>
+                    </ul>
+                </div>
+                <div class="animate-fade-in text-center sm:text-left" style="animation-delay: 0.2s;">
+                    <h4 class="text-base sm:text-lg font-semibold mb-4">Legal</h4>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="text-gray-300 hover:text-white transition-colors duration-300 text-sm sm:text-base">Terms</a></li>
+                        <li><a href="#" class="text-gray-300 hover:text-white transition-colors duration-300 text-sm sm:text-base">Privacy</a></li>
+                    </ul>
+                </div>
+                <div class="animate-fade-in text-center sm:text-left" style="animation-delay: 0.3s;">
+                    <h4 class="text-base sm:text-lg font-semibold mb-4">Follow Us</h4>
+                    <div class="flex space-x-4 justify-center sm:justify-start">
+                        <a href="#" class="p-2 border border-gray-600 rounded-lg hover:bg-gray-800 transition-colors duration-300">
+                            <i data-lucide="twitter" class="w-5 h-5"></i>
+                        </a>
+                        <a href="#" class="p-2 border border-gray-600 rounded-lg hover:bg-gray-800 transition-colors duration-300">
+                            <i data-lucide="instagram" class="w-5 h-5"></i>
+                        </a>
+                        <a href="#" class="p-2 border border-gray-600 rounded-lg hover:bg-gray-800 transition-colors duration-300">
+                            <i data-lucide="github" class="w-5 h-5"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="border-t border-gray-800 pt-6 sm:pt-8 text-center animate-fade-in">
+                <p class="text-gray-300 text-sm sm:text-base">Copyright © 2025 DOT AI. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile menu functionality
+        const mobileMenuButton = document.getElementById('mobile-menu-button');
+        const mobileMenu = document.getElementById('mobile-menu');
+        const mobileMenuClose = document.getElementById('mobile-menu-close');
+        const mobileMenuLinks = document.querySelectorAll('.mobile-menu-link');
+
+        function openMobileMenu() {
+            mobileMenu.classList.add('open');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeMobileMenu() {
+            mobileMenu.classList.remove('open');
+            document.body.style.overflow = '';
+        }
+
+        mobileMenuButton.addEventListener('click', openMobileMenu);
+        mobileMenuClose.addEventListener('click', closeMobileMenu);
+
+        // Close mobile menu when clicking on links
+        mobileMenuLinks.forEach(link => {
+            link.addEventListener('click', closeMobileMenu);
+        });
+
+        // Close mobile menu when clicking outside
+        mobileMenu.addEventListener('click', (e) => {
+            if (e.target === mobileMenu) {
+                closeMobileMenu();
+            }
+        });
+
+        // Header scroll animation
+        let lastScrollTop = 0;
+        const header = document.querySelector('header');
+        
+        window.addEventListener('scroll', () => {
+            let scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+            
+            if (scrollTop > 100) {
+                header.classList.add('header-shrink');
+            } else {
+                header.classList.remove('header-shrink');
+            }
+            
+            lastScrollTop = scrollTop;
+        });
+
+        // Intersection Observer for scroll animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+
+        // Observe all elements with animate-on-scroll class
+        document.querySelectorAll('.animate-on-scroll').forEach(el => {
+            observer.observe(el);
+        });
+
+        // Theme toggle functionality (Light/Dark mode simulation)
+        const themeToggle = document.getElementById('theme-toggle');
+        let isDark = false;
+        
+        themeToggle.addEventListener('click', () => {
+            isDark = !isDark;
+            const icon = themeToggle.querySelector('i');
+            
+            if (isDark) {
+                icon.setAttribute('data-lucide', 'moon');
+                document.body.style.filter = 'invert(1) hue-rotate(180deg)';
+            } else {
+                icon.setAttribute('data-lucide', 'sun');
+                document.body.style.filter = 'none';
+            }
+            lucide.createIcons();
+        });
+
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Initialize Lucide icons
+        lucide.createIcons();
+
+        // Handle window resize for mobile menu
+        window.addEventListener('resize', () => {
+            if (window.innerWidth >= 768) {
+                closeMobileMenu();
+            }
+        });
+    </script>
+</body>
+</html>
